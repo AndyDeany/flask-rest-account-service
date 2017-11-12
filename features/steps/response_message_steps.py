@@ -8,7 +8,13 @@ EXPECTED_MESSAGES = {
         "An account with username '{username}' was successfully created.",
 
     "the username is already in use":
-        "An account already exists with username '{username}'."
+        "An account already exists with username '{username}'.",
+
+    "a required argument was missing":
+        "The 'username', 'password' and 'email' arguments are required.",
+
+    "an unexpected argument was given":
+        "Unexpected arguments: {unexpected_argument}",
 }
 
 

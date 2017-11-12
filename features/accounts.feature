@@ -14,3 +14,13 @@ Feature: Accounts API
     When I try to create an account using a used username
     Then I should get a 409 response
     And the response message should indicate that the username is already in use
+
+  Scenario: Missing account creation argument
+    When I try to create an account without providing an email
+    Then I should get a 400 response
+    And the response message should indicate that a required argument was missing
+
+  Scenario: Unexpected account creation argument
+    When I try to create an account whilst providing an extra argument
+    Then I should get a 400 response
+    And the response message should indicate that an unexpected argument was given

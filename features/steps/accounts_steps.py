@@ -7,15 +7,30 @@ from aloe import step, world
 from features.helper import *
 
 
-@step(r"I try to create an account using an? (used|unused) username")
-def create_account_valid(self, use):
+def post_account(json):
+    """Send a POST request to the /accounts endpoint with the given json payload."""
+    world.response = post(url("/accounts"), json=json)
+
+
+@step(r"I try to create an account ((?:\w ?)+)")
+def create_account_valid_request(self, condition):
     world.username = str(uuid4())
     world.password = str(uuid4())
     world.email = f"{world.username}@gmail.com"
     json = {"username": world.username, "password": world.password, "email": world.email}
-    world.response = post(url("/accounts"), json=json)
-    if use == "used":
-        world.response = post(url("/accounts"), json=json)
+
+    if condition.startswith("without providing a"):
+        argument_name = condition.split()[-1]
+        del json[argument_name]
+
+    elif condition == "whilst providing an extra argument":
+        world.unexpected_argument = {"well,": "this is unexpected"}
+        json.update(world.unexpected_argument)
+
+    elif condition == "using a used username":
+        post_account(json)  # Post account an extra time
+
+    post_account(json)
 
 
 @step(r"I should get a (\d+) response")
