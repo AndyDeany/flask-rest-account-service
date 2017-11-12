@@ -1,4 +1,4 @@
-Feature: Accounts API
+Feature: Account Creation
 
   As a developer
   I want to be able to create accounts for my users
