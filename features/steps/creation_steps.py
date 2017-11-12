@@ -33,11 +33,6 @@ def create_account_valid_request(self, condition):
     post_account(json)
 
 
-@step(r"I should get a (\d+) response")
-def check_response(self, expected_response_code):
-    expect(world.response.status_code).to(equal(int(expected_response_code)))
-
-
 @step("an account with that username should be created")
 def confirm_account_created(self):
     expect(get(url(f"/accounts/{world.username}")).status_code).to(equal(200))
