@@ -7,13 +7,15 @@ from aloe import step, world
 from features.helper import *
 
 
-@step(r"I try to create an account using an unused username")
-def create_account_valid(self):
+@step(r"I try to create an account using an? (used|unused) username")
+def create_account_valid(self, use):
     world.username = str(uuid4())
     world.password = str(uuid4())
     world.email = f"{world.username}@gmail.com"
     json = {"username": world.username, "password": world.password, "email": world.email}
     world.response = post(url("/accounts"), json=json)
+    if use == "used":
+        world.response = post(url("/accounts"), json=json)
 
 
 @step(r"I should get a (\d+) response")
