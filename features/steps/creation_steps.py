@@ -1,23 +1,14 @@
 """Module containing test execution steps for calling the accounts API."""
-from uuid import uuid4
-
 from requests import get, post
 from aloe import step, world
 
-from features.helper import *
-
-
-def post_account(json):
-    """Send a POST request to the /accounts endpoint with the given json payload."""
-    world.response = post(url("/accounts"), json=json)
+from features.helper import *   # pylint: disable=wildcard-import,unused-wildcard-import
+from features.helper.accounts_api import post_account, generate_random_account_json
 
 
 @step(r"I try to create an account ((?:\w ?)+)")
 def create_account_valid_request(self, condition):
-    world.username = str(uuid4())
-    world.password = str(uuid4())
-    world.email = f"{world.username}@gmail.com"
-    json = {"username": world.username, "password": world.password, "email": world.email}
+    json = generate_random_account_json()
 
     if condition.startswith("without providing a"):
         argument_name = condition.split()[-1]

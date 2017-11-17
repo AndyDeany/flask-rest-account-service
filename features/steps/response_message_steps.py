@@ -15,6 +15,9 @@ EXPECTED_MESSAGES = {
 
     "an unexpected argument was given":
         "Unexpected arguments: {unexpected_argument}",
+
+    "the requested user does not exist":
+        "No account exists with username '{username}'.",
 }
 
 
