@@ -25,7 +25,7 @@ def get_non_existant_account(self):
 
 @step(r"I try to get all the usernames that are currently in use")
 def get_all_usernames(self):
-    world.usernames = [create_random_account()["username"] for _ in range(10)]
+    world.usernames = [create_random_account()["username"] for _ in range(3)]
     world.response = get(url("/accounts"))
 
 @step(r"the response should contain a list of all used usernames")
