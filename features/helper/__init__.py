@@ -1,6 +1,6 @@
 from expects import *
 
-from spec.config import BASE_URL
+from features.config import BASE_URL
 
 
 # Helper functions
