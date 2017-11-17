@@ -8,7 +8,7 @@ from features.helper import *
 from features.helper.accounts_api import create_random_account
 
 
-@step("I try to get the details of an existing account")
+@step(r"I try to get the details of an existing account")
 def get_exisiting_account_details(self):
     create_random_account()
     world.response = get(url(f"/accounts/{world.username}"))
@@ -21,7 +21,8 @@ def check_response_contains_user_details(self):
 
 @step(r"I try to get the details of an account that doesn't exist")
 def get_non_existant_account(self):
-    world.response = get(url(f"/accounts/{uuid4()}"))
+    world.username = uuid4()
+    world.response = get(url(f"/accounts/{world.username}"))
 
 @step(r"I try to get all the usernames that are currently in use")
 def get_all_usernames(self):
