@@ -6,10 +6,10 @@ from features.helper import *
 from features.helper.accounts_api import create_random_account
 
 
-@step(r"I attempt to login with an? (in)?valid username and password combination")
-def attempt_login(self, invalid):
+@step(r"I attempt to login with an? (in)?valid (\w+) and password combination")
+def attempt_login(self, invalid, login):
     json = create_random_account()
-    json.pop("email")
+    json = {key: json[key] for key in (login, "password")}
     if invalid:
         json["password"] = "very_wr0ng_pa$$w0rd"
     world.response = post(url("/login"), json=json)
