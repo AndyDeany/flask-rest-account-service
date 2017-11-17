@@ -15,6 +15,6 @@ Feature: Account retrieval
     And the response message should indicate that the requested user does not exist
 
   Scenario: Retrieving all used usernames
-    When I try to get all the usernames currently in used
+    When I try to get all the usernames that are currently in use
     Then I should get a 200 response
     And the response should contain a list of all used usernames
