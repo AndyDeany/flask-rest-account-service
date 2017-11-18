@@ -10,6 +10,9 @@ EXPECTED_MESSAGES = {
     "the username is already in use":
         "An account already exists with username '{username}'.",
 
+    "usernames cannot contain @ symbols":
+        "The value of the 'username' field must not contain an '@' symbol.",
+
     "a required argument was missing":
         "The 'username', 'password' and 'email' arguments are required.",
 

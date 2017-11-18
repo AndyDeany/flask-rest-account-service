@@ -15,6 +15,12 @@ Feature: Account creation
     Then I should get a 409 response
     And the response message should indicate that the username is already in use
 
+  Scenario: Usernames cannot contain any @ symbols
+    # This is to prevent people using other people's email addresses as their username
+    When I try to create an account using a username with an @ symbol in it
+    Then I should get a 422 response
+    And the response message should indicate that usernames cannot contain @ symbols
+
   Scenario: Missing account creation argument
     When I try to create an account without providing an email
     Then I should get a 400 response
