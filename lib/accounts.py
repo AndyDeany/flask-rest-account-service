@@ -56,6 +56,9 @@ class AccountsList(Resource):
         if json:
             abort(400, message=f"Unexpected arguments: {json}")
 
+        if "@" in username:
+            abort(422, message="The value of the 'username' field must not contain an '@' symbol.")
+
         if find_account(username) is not None:
             abort(409, message=f"An account already exists with username '{username}'.")
 
