@@ -1,8 +1,4 @@
-"""This file contains code for the /accounts endpoint.
-
-Created: 2017-08-07
-Author: Andrew Dean
-"""
+"""This file contains code for the /accounts endpoint."""
 from flask_restful import Resource, abort
 from flask_restful.reqparse import RequestParser
 from flask import request
