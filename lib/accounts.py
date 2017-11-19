@@ -1,4 +1,4 @@
-"""This file contains code for the /accounts endpoint."""
+"""Module containing code for the /accounts endpoint."""
 from flask_restful import Resource, abort
 from flask_restful.reqparse import RequestParser
 from flask import request
