@@ -15,6 +15,21 @@ def attempt_login(self, invalid, login):
     world.response = post(url("/login"), json=json)
 
 
+@step(r"I attempt to login without providing a password")
+def attempt_no_password_login(self):
+    create_random_account()
+    world.response = post(url("/login"), json={"username": world.username})
+
+
+@step(r"I provide an extra argument whilst attempting to login")
+def attempt_login_with_extra_arg(self):
+    json = create_random_account()
+    del json["email"]
+    world.unexpected_argument = {"you": "can't login with this"}
+    json.update(world.unexpected_argument)
+    world.response = post(url("/login"), json=json)
+
+
 @step(r"the response should contain a key suggesting that login was (un)?successful")
 def check_response_login_status(self, unsuccessful):
     success = str(not bool(unsuccessful)).lower()

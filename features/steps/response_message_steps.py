@@ -21,6 +21,9 @@ EXPECTED_MESSAGES = {
 
     "the user does not exist":
         "No account exists with username '{username}'.",
+
+    "the password argument was missing":
+        "The 'password' argument is required.",
 }
 
 
