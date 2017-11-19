@@ -15,7 +15,7 @@ def attempt_login(self, invalid, login):
     world.response = post(url("/login"), json=json)
 
 
-@step(r"the response should contain a key suggesting that login was (un)successful")
+@step(r"the response should contain a key suggesting that login was (un)?successful")
 def check_response_login_status(self, unsuccessful):
     success = str(bool(unsuccessful)).lower()
     expect(world.response.json()).to(equal({"success": success}))
