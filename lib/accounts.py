@@ -35,6 +35,14 @@ class Accounts(Resource):
 
         return account
 
+    def delete(self, username):
+        """Delete the account with the given username."""
+        account = find_account(username)
+        if account is None:
+            abort(404, message=f"No account exists with username '{username}'.")
+
+        ACCOUNTS.remove(account)
+
 
 class AccountsList(Resource):
     """Class representing the base /accounts endpoint in the REST API."""
