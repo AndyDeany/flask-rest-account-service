@@ -1,4 +1,4 @@
-"""Module containing steps for sending POSt requests to the /login endpoint."""
+"""Module containing steps for sending POST requests to the /login endpoint."""
 from uuid import uuid4
 
 from aloe import step, world
