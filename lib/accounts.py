@@ -7,11 +7,12 @@ from werkzeug.security import generate_password_hash
 
 ACCOUNTS = []   # TODO: replace with a database (SQL Alchemy?)
 
-def find_account(username):
-    """Return the account with the given username or None if it doesn't exist."""
-    username = username.casefold()
+def find_account(login):
+    """Return the account with the given login or None if it doesn't exist."""
+    login = login.casefold()
+    login_type = "email" if "@" in login else "username"
     for account in ACCOUNTS:
-        if account["username"].casefold() == username:
+        if account[login_type].casefold() == login:
             return account
     return None
 
