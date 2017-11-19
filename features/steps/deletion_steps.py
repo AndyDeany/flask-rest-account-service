@@ -1,4 +1,6 @@
 """Module containing steps for sending POSt requests to the /login endpoint."""
+from uuid import uuid4
+
 from aloe import step, world
 from requests import get, delete
 
@@ -9,6 +11,12 @@ from features.helper.accounts_api import create_random_account
 @step(r"I try to delete a user's account")
 def delete_user_account(self):
     create_random_account()
+    world.response = delete(url(f"/accounts/{world.username}"))
+
+
+@step(r"I try to delete an account that doesn't exist")
+def delete_non_existant_account(self):
+    world.username = uuid4()
     world.response = delete(url(f"/accounts/{world.username}"))
 
 

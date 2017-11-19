@@ -12,7 +12,7 @@ Feature: Account retrieval
   Scenario: Account does not exist
     When I try to get the details of an account that doesn't exist
     Then I should get a 404 response
-    And the response message should indicate that the requested user does not exist
+    And the response message should indicate that the user does not exist
 
   Scenario: Retrieving all used usernames
     When I try to get all the usernames that are currently in use

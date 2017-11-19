@@ -10,6 +10,11 @@ Feature: Account deletion
     Then I should get a 200 response
     And the user's account should be deleted
 
+  Scenario: Attempting to delete a non-existant account
+    When I try to delete an account that doesn't exist
+    Then I should get a 404 response
+    And the response message should indicate that the user does not exist
+
   Scenario: Deleting all accounts simulateously is not allowed
     When I try to delete all users' accounts
     Then I should get a 405 response
