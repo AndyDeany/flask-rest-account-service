@@ -13,7 +13,7 @@ def find_account(login):
     login_type = "email" if "@" in login else "username"
     for account in ACCOUNTS:
         if account[login_type].casefold() == login:
-            return account
+            return account.copy()
     return None
 
 
