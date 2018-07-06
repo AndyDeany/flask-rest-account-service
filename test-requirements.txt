@@ -1,3 +1,3 @@
-aloe==0.1.14
-expects==0.8.0
-requests==2.18.4
+aloe>=0.1.15
+expects>=0.8.0
+requests>=2.18.4
