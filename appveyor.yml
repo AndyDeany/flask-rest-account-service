@@ -1,0 +1,19 @@
+version: ?#{build}
+
+build: off
+
+environment:
+  matrix:
+    - PYTHON: C:\\Python34
+    - PYTHON: C:\\Python35
+    - PYTHON: C:\\Python36
+
+install:
+  - SET PATH=%PYTHON%;%PYTHON%\\Scripts;%PATH%
+  - python --version
+
+  - pip install -r requirements.txt
+  - pip install -r test-requirements.txt
+
+test_script:
+  - aloe -vv
